@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private int y_pos;
     [SerializeField]
     private float timer;
-    private bool crRunning;
+    public bool crRunning;
     void Start()
     {
         crRunning = false;
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
             x_pos += x;
             y_pos += y;
             transform.position = textToMap.grid.gridArray[x_pos, y_pos].transform.position;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(timer);
             StartCoroutine(PlayerMove(x, y));
         }
     }
