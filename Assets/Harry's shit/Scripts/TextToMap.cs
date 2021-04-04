@@ -13,13 +13,15 @@ public class TextToMap : MonoBehaviour
     [SerializeField]
     private GameObject player;
 
+
     void Awake()
     {
         GenerateMap();
     }
 
-    private void GenerateMap()
+    public void GenerateMap()
     {
+
         string[] rows = Regex.Split(mapText.text, "\r\n|\r|\n");//Detect and split every character on your text file.
         //Create the grid
         grid = new Grid(rows[0].Length, rows.Length, 1);
@@ -46,4 +48,9 @@ public class TextToMap : MonoBehaviour
             currentPosition = new Vector2(0, --currentPosition.y);
         }
     }
+
+
+
+
+
 }

@@ -139,7 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fabb3106f0307b84695a56ecaddfa8e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  set_spd: 5
   timer: 0.2
   crRunning: 0
   thisAnim: {fileID: 622580348}
