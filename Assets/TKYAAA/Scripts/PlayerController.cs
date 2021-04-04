@@ -1,13 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     private TextToMap textToMap;
-    private Vector3 spd;
-    [SerializeField]
-    private float set_spd;
     private int x_pos;
     private int y_pos;
     [SerializeField]
@@ -26,7 +24,6 @@ public class PlayerController : MonoBehaviour
         canLeft = true;
         canRight = true;
         crRunning = false;
-        spd = Vector2.zero;
         textToMap = GameObject.Find("TextToMapControl").GetComponent<TextToMap>();
         x_pos = (int)transform.position.x;
         y_pos = (int)transform.position.y * -1;
@@ -36,23 +33,24 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         DetectWall();
+        PlayerControl();
         PlayerAnimation();
-        PlayerControl(); 
+        transform.position = textToMap.grid.gridArray[x_pos, y_pos].transform.position;
+        NextLevel();
     }
 
     IEnumerator PlayerMove(int x, int y)
     {
+        yield return new WaitForSeconds(timer / 2);
         if (textToMap.grid.gridArray[x_pos + x, y_pos + y].tag == "Wall" || textToMap.grid.gridArray[x_pos + x, y_pos + y].tag == "Intersact"
             || textToMap.grid.gridArray[x_pos + x, y_pos + y].tag == "Exit")
         {
             thisAnim.SetInteger("Direction", 0);
-            Debug.Log("Stop");
             crRunning = false;
             if (textToMap.grid.gridArray[x_pos + x, y_pos + y].tag == "Intersact" || textToMap.grid.gridArray[x_pos + x, y_pos + y].tag == "Exit")
             {
                 x_pos += x;
                 y_pos += y;
-                transform.position = textToMap.grid.gridArray[x_pos, y_pos].transform.position;
             }
             StopAllCoroutines();
         }
@@ -61,8 +59,7 @@ public class PlayerController : MonoBehaviour
             crRunning = true;
             x_pos += x;
             y_pos += y;
-            transform.position = textToMap.grid.gridArray[x_pos, y_pos].transform.position;
-            yield return new WaitForSeconds(timer);
+            yield return new WaitForSeconds(timer / 2);
             StartCoroutine(PlayerMove(x, y));
         }
     }
@@ -70,48 +67,52 @@ public class PlayerController : MonoBehaviour
     private void NextLevel()
     {
         if(textToMap.grid.gridArray[x_pos, y_pos].tag == "Exit")
-        {
-            
-        }
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     private void DetectWall()
     {
-        if (textToMap.grid.gridArray[x_pos + 1, y_pos].tag == "Wall")
-            canRight = false;
-        else
-            canRight = true;
-        if (textToMap.grid.gridArray[x_pos, y_pos + 1].tag == "Wall")
-            canDown = false;
-        else
-            canDown = true;
-        if (textToMap.grid.gridArray[x_pos - 1, y_pos].tag == "Wall")
-            canLeft = false;
-        else
-            canLeft = true;
-        if (textToMap.grid.gridArray[x_pos, y_pos - 1].tag == "Wall")
-            canUp = false;
-        else
-            canUp = true;
+        if (!crRunning)
+        {
+            if (textToMap.grid.gridArray[x_pos + 1, y_pos].tag == "Wall")
+                canRight = false;
+            else
+                canRight = true;
+            if (textToMap.grid.gridArray[x_pos, y_pos + 1].tag == "Wall")
+                canDown = false;
+            else
+                canDown = true;
+            if (textToMap.grid.gridArray[x_pos - 1, y_pos].tag == "Wall")
+                canLeft = false;
+            else
+                canLeft = true;
+            if (textToMap.grid.gridArray[x_pos, y_pos - 1].tag == "Wall")
+                canUp = false;
+            else
+                canUp = true;
+        }
     }
 
     private void PlayerAnimation()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow) && canDown)
+        if (!crRunning)
         {
-            thisAnim.SetInteger("Direction", 1);
-        }
-        if (Input.GetKeyDown(KeyCode.UpArrow) && canUp)
-        {
-            thisAnim.SetInteger("Direction", 2);
-        }
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && canLeft)
-        {
-            thisAnim.SetInteger("Direction", 3);
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow) && canRight)
-        {
-            thisAnim.SetInteger("Direction", 4);
+            if (Input.GetKeyDown(KeyCode.DownArrow) && canDown)
+            {
+                thisAnim.SetInteger("Direction", 1);
+            }
+            if (Input.GetKeyDown(KeyCode.UpArrow) && canUp)
+            {
+                thisAnim.SetInteger("Direction", 2);
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow) && canLeft)
+            {
+                thisAnim.SetInteger("Direction", 3);
+            }
+            if (Input.GetKeyDown(KeyCode.RightArrow) && canRight)
+            {
+                thisAnim.SetInteger("Direction", 4);
+            }
         }
     }
     
