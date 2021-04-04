@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Ivory/Ivory.unity
+    guid: d48a13ec331a8eb4c8f4fd78d8498902
   m_configObjects: {}

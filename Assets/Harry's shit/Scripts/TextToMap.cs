@@ -13,12 +13,14 @@ public class TextToMap : MonoBehaviour
     private Vector2 currentPosition = new Vector2(0, 0);//Position to generate the next tile
     [SerializeField]
     private GameObject player;
+    private PlayerController pc;
+
     void Start()
     {
         GenerateMap();
-        player.transform.position = grid.gridArray[13, 0].transform.position;
         CameraReposition();
         CameraSize();
+        pc = player.GetComponent<PlayerController>();
     }
 
     private void GenerateMap()
@@ -38,6 +40,8 @@ public class TextToMap : MonoBehaviour
                         GameObject tile = Instantiate(tm.prefab, currentPosition, quaternion.identity, transform);
                         //Add tile to the grid
                         grid.gridArray[(int)currentPosition.x, (int)currentPosition.y * -1] = tile;
+                        if (tile.tag == "Respawn")
+                            player.transform.position = tile.transform.position;
                     }
                 }
                 //Move to the next in the same line
