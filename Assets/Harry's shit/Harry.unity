@@ -176,6 +176,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &395910114 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6535528368552229981, guid: abab2de05f8dbd34b9f9f44dc5a9324f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1490889013}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1147875507 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2357704615210457895, guid: abab2de05f8dbd34b9f9f44dc5a9324f,
@@ -195,6 +201,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   set_spd: 5
+  timer: 0.2
+  crRunning: 0
+  thisAnim: {fileID: 395910114}
+  DirectionNum: 0
 --- !u!1 &1396526690
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,6 +369,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4580328661879656016, guid: abab2de05f8dbd34b9f9f44dc5a9324f,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abab2de05f8dbd34b9f9f44dc5a9324f, type: 3}
