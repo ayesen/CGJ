@@ -43,11 +43,12 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(timer / 2);
         if (textToMap.grid.gridArray[x_pos + x, y_pos + y].tag == "Wall" || textToMap.grid.gridArray[x_pos + x, y_pos + y].tag == "Intersact"
-            || textToMap.grid.gridArray[x_pos + x, y_pos + y].tag == "Exit")
+            || textToMap.grid.gridArray[x_pos + x, y_pos + y].tag == "Exit" || textToMap.grid.gridArray[x_pos + x, y_pos + y].tag == "Respawn")
         {
             thisAnim.SetInteger("Direction", 0);
             crRunning = false;
-            if (textToMap.grid.gridArray[x_pos + x, y_pos + y].tag == "Intersact" || textToMap.grid.gridArray[x_pos + x, y_pos + y].tag == "Exit")
+            if (textToMap.grid.gridArray[x_pos + x, y_pos + y].tag == "Intersact" || textToMap.grid.gridArray[x_pos + x, y_pos + y].tag == "Exit"
+                || textToMap.grid.gridArray[x_pos + x, y_pos + y].tag == "Respawn")
             {
                 x_pos += x;
                 y_pos += y;
@@ -66,8 +67,11 @@ public class PlayerController : MonoBehaviour
 
     private void NextLevel()
     {
-        if(textToMap.grid.gridArray[x_pos, y_pos].tag == "Exit")
+        if (textToMap.grid.gridArray[x_pos, y_pos].tag == "Exit")
+        {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
     }
 
     private void DetectWall()
