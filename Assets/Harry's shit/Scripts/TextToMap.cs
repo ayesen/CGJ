@@ -6,11 +6,14 @@ using Unity.Mathematics;
 //for the below lines of codes, and special thanks to my friend Ivory for sending me this link
 public class TextToMap : MonoBehaviour
 {
-    
+    public Grid grid;
     public TextMapping[] mappingData;//Used to add different tiles
     public TextAsset mapText;//Importing external text files to convert into maps.
     private Vector2 currentPosition = new Vector2(0, 0);//Position to generate the next tile
-    void Start()
+    [SerializeField]
+    private GameObject player;
+
+    void Awake()
     {
         GenerateMap();
     }
@@ -18,7 +21,8 @@ public class TextToMap : MonoBehaviour
     private void GenerateMap()
     {
         string[] rows = Regex.Split(mapText.text, "\r\n|\r|\n");//Detect and split every character on your text file.
-        
+        //Create the grid
+        grid = new Grid(rows[0].Length, rows.Length, 1);
         //Lines
         foreach (string row in rows)
         {   //Each characters
@@ -28,7 +32,11 @@ public class TextToMap : MonoBehaviour
                 {
                     if (c == tm.character)
                     {
-                        Instantiate(tm.prefab, currentPosition, quaternion.identity, transform);
+                        GameObject tile = Instantiate(tm.prefab, currentPosition, quaternion.identity, transform);
+                        //Add tile to the grid
+                        grid.gridArray[(int)currentPosition.x, (int)currentPosition.y * -1] = tile;
+                        if (tile.tag == "Respawn")
+                            player.transform.position = tile.transform.position;
                     }
                 }
                 //Move to the next in the same line
@@ -37,6 +45,5 @@ public class TextToMap : MonoBehaviour
             //Go to the next line
             currentPosition = new Vector2(0, --currentPosition.y);
         }
-        
     }
 }
