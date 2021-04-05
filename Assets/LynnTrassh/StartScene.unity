@@ -277,7 +277,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392882261}
   m_LocalRotation: {x: -0, y: -0, z: -0.11124824, w: 0.99379265}
-  m_LocalPosition: {x: 5.55, y: 2.98, z: 0}
+  m_LocalPosition: {x: 2.71, y: 2.73, z: 0}
   m_LocalScale: {x: 0.18894294, y: 0.18894294, z: 0.18894294}
   m_Children: []
   m_Father: {fileID: 0}
@@ -398,8 +398,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -107, y: 163}
-  m_SizeDelta: {x: 0, y: -432.77905}
+  m_AnchoredPosition: {x: -146.00002, y: 78}
+  m_SizeDelta: {x: 251.3346, y: -147.65128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &507608251
 MonoBehaviour:
@@ -432,8 +432,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Mind Palace
+    m_LineSpacing: 0.66
+  m_Text: "Mind \n         Palace"
 --- !u!222 &507608252
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -568,7 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -711,7 +711,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 796056091}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -57.800003, y: 0, z: -5202.0005}
+  m_LocalPosition: {x: -57.800003, y: 0, z: 0}
   m_LocalScale: {x: 8.8994665, y: 8.8994665, z: 8.8994665}
   m_Children: []
   m_Father: {fileID: 1149254787}
@@ -964,7 +964,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 944228302}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -57.8, y: 0, z: -5202.0005}
+  m_LocalPosition: {x: -57.8, y: 0, z: 0}
   m_LocalScale: {x: 8.899656, y: 8.899656, z: 8.899656}
   m_Children: []
   m_Father: {fileID: 832492847}
