@@ -6,8 +6,10 @@ public class CameraMove : MonoBehaviour
 {
     [SerializeField]
     private GameObject player;
+
+    public float offset = 5f;
     void Update()
     {
-        transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
+        transform.position = new Vector3(player.transform.position.x+offset, player.transform.position.y, transform.position.z);
     }
 }

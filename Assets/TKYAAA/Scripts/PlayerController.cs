@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour
                 x_pos += x;
                 y_pos += y;
             }
+            GameObject.Find("UDLRManager").GetComponent<UDLRManager>().FadeInOrOut();
+            GameObject.Find("UDLRManager").GetComponent<UDLRManager>().ChangeQuestions(UDLRManager.intersection);
             StopAllCoroutines();
         }
         else
