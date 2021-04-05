@@ -11,54 +11,82 @@ public class UDLRManager : MonoBehaviour
     public GameObject down;
     public GameObject left;
     public GameObject right;
-    
-    
+    public GameObject answers;
+
+    public GameObject Player;
+    private PlayerController pC;
+    private QNA qNA;
     
     private bool canChoose = true;
+
+    public static int intersection;
+
+    private void Awake()
+    {
+        pC = Player.GetComponent<PlayerController>();
+        qNA = GetComponent<QNA>();
+    }
+
+    private void Start()
+    {
+        intersection = 0;
+        ChangeQuestions(intersection);
+    }
+
     private void Update()
     {
-        if (canChoose)
+        if (!pC.crRunning)
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 //do the walk stuff
                 //fade out animation
-                FadeInOrOut();
+                
                 //load the next question
-                ChangeQuestions();
+               
                 //if the animation finished, fade in
                 //better call from other script
-
+                FadeInOrOut();
+                intersection += 1; 
+                
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 FadeInOrOut();
+                intersection += 1; 
+                
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 FadeInOrOut();
+                intersection += 1; 
+                
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 FadeInOrOut();
+                intersection += 1; 
+                
             }
         }
     }
 
-    void FadeInOrOut()
+    public void FadeInOrOut()
     {
         up.GetComponent<PanelFader>().Fade();
         down.GetComponent<PanelFader>().Fade();
         left.GetComponent<PanelFader>().Fade();
         right.GetComponent<PanelFader>().Fade();
+        answers.GetComponent<PanelFader>().Fade();
     }
 
-    void ChangeQuestions()//dont know the data structure for the questions
+    public void ChangeQuestions(int x)//dont know the data structure for the questions
     {
-        up.GetComponentInChildren<TextMeshProUGUI>().text = "↑: ";
-        down.GetComponentInChildren<TextMeshProUGUI>().text = "↓: ";
-        left.GetComponentInChildren<TextMeshProUGUI>().text = "←: ";
-        right.GetComponentInChildren<TextMeshProUGUI>().text = "←: ";
+        answers.GetComponentInChildren<TextMeshProUGUI>().text = " "+qNA.answers[x];
+        up.GetComponentInChildren<TextMeshProUGUI>().text = " ↑: " + qNA.questions[x].questions[0];
+        down.GetComponentInChildren<TextMeshProUGUI>().text = " ↓: "+ qNA.questions[x].questions[1];
+        left.GetComponentInChildren<TextMeshProUGUI>().text = " ←: "+ qNA.questions[x].questions[2];
+        right.GetComponentInChildren<TextMeshProUGUI>().text = " →: "+ qNA.questions[x].questions[3];
     }
     
     
