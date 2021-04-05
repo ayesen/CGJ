@@ -5,6 +5,7 @@ using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Debug = UnityEngine.Debug;
 
 public class UDLRManager : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class UDLRManager : MonoBehaviour
     private PlayerController pC;
     private QNA qNA;
     
-    private bool canChoose = true;
+    //private bool canChoose = true;
 
     public static int intersection;
 
@@ -31,11 +32,12 @@ public class UDLRManager : MonoBehaviour
     private void Start()
     {
         intersection = 0;
-        ChangeQuestions(intersection);   
+        ChangeQuestions();   
     }
 
     private void Update()
     {
+        //LevelOneDetect();
         if (!pC.crRunning)
         {
             if (Input.GetKeyDown(KeyCode.UpArrow) && pC.canUp)
@@ -48,28 +50,29 @@ public class UDLRManager : MonoBehaviour
                 //if the animation finished, fade in
                 //better call from other script
                 FadeInOrOut();
-                intersection += 1; 
+                //intersection += 1; 
                 
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow)&&pC.canDown)
             {
                 FadeInOrOut();
-                intersection += 1; 
+                //intersection += 1; 
                 
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow)&&pC.canLeft)
             {
                 FadeInOrOut();
-                intersection += 1; 
+                //intersection += 1; 
                 
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow)&&pC.canRight)
             {
                 FadeInOrOut();
-                intersection += 1; 
+                //intersection += 1; 
                 
             }
         }
+        
     }
 
     public void FadeInOrOut()
@@ -81,18 +84,18 @@ public class UDLRManager : MonoBehaviour
         answers.GetComponent<PanelFader>().Fade();
     }
 
-    public void ChangeQuestions(int x)//dont know the data structure for the questions
+    public void ChangeQuestions()//dont know the data structure for the questions
     {
         up.GetComponent<Image>().color = Color.black;
         down.GetComponent<Image>().color = Color.black;
         left.GetComponent<Image>().color = Color.black;
         right.GetComponent<Image>().color = Color.black;
-
-        answers.GetComponentInChildren<TextMeshProUGUI>().text = " "+qNA.answers[x];
-        up.GetComponentInChildren<TextMeshProUGUI>().text = " ↑: " + qNA.questions[x].questions[0];
-        down.GetComponentInChildren<TextMeshProUGUI>().text = " ↓: "+ qNA.questions[x].questions[1];
-        left.GetComponentInChildren<TextMeshProUGUI>().text = " ←: "+ qNA.questions[x].questions[2];
-        right.GetComponentInChildren<TextMeshProUGUI>().text = " →: "+ qNA.questions[x].questions[3];
+        LevelOneDetect();
+        answers.GetComponentInChildren<TextMeshProUGUI>().text = " "+qNA.answers[intersection];
+        up.GetComponentInChildren<TextMeshProUGUI>().text = " ↑: " + qNA.questions[intersection].questions[0];
+        down.GetComponentInChildren<TextMeshProUGUI>().text = " ↓: "+ qNA.questions[intersection].questions[1];
+        left.GetComponentInChildren<TextMeshProUGUI>().text = " ←: "+ qNA.questions[intersection].questions[2];
+        right.GetComponentInChildren<TextMeshProUGUI>().text = " →: "+ qNA.questions[intersection].questions[3];
         
         //DisableQuestions();
     }
@@ -118,6 +121,44 @@ public class UDLRManager : MonoBehaviour
         {
             right.GetComponentInChildren<TextMeshProUGUI>().text = "";
             right.GetComponent<Image>().color = Color.grey;
+        }
+    }
+
+    public void LevelOneDetect()
+    {
+        Vector2 pos = new Vector2(pC.x_pos, pC.y_pos);
+        Debug.Log(pos);
+        if (pos.Equals(new Vector2(1, 8)))
+        {
+            intersection = 0;
+        }
+        if (pos.Equals(new Vector2(6, 8)))
+        {
+            intersection = 1;
+        }
+        if (pos.Equals(new Vector2(6, 13)))
+        {
+            intersection = 2;
+        }
+        if (pos.Equals(new Vector2(13, 13)))
+        {
+            intersection = 3;
+        }
+        if (pos.Equals(new Vector2(13, 5)))
+        {
+            intersection = 4;
+        }
+        if (pos.Equals(new Vector2(17, 5)))
+        {
+            intersection = 5;
+        }
+        if (pos.Equals(new Vector2(17, 8)))
+        {
+            intersection = 6;
+        }
+        if (pos.Equals(new Vector2(19, 8)))
+        {
+            intersection = 7;
         }
     }
     
