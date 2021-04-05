@@ -13,14 +13,15 @@ public class TextToMap : MonoBehaviour
     [SerializeField]
     private GameObject player;
 
-    //If this is not awake, player may get stuck and out of range error.
+
     void Awake()
     {
         GenerateMap();
     }
 
-    private void GenerateMap()
+    public void GenerateMap()
     {
+
         string[] rows = Regex.Split(mapText.text, "\r\n|\r|\n");//Detect and split every character on your text file.
         //Create the grid
         grid = new Grid(rows[0].Length, rows.Length, 1);
@@ -36,7 +37,6 @@ public class TextToMap : MonoBehaviour
                         GameObject tile = Instantiate(tm.prefab, currentPosition, quaternion.identity, transform);
                         //Add tile to the grid
                         grid.gridArray[(int)currentPosition.x, (int)currentPosition.y * -1] = tile;
-                        //Spawn the player here
                         if (tile.tag == "Respawn")
                             player.transform.position = tile.transform.position;
                     }
@@ -48,4 +48,9 @@ public class TextToMap : MonoBehaviour
             currentPosition = new Vector2(0, --currentPosition.y);
         }
     }
+
+
+
+
+
 }
