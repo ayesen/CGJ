@@ -33,10 +33,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         DetectWall();
+        
         PlayerControl();
         PlayerAnimation();
         transform.position = textToMap.grid.gridArray[x_pos, y_pos].transform.position;
         NextLevel();
+        Debug.Log(canDown);GameObject.Find("UDLRManager").GetComponent<UDLRManager>().DisableQuestions();
     }
 
     IEnumerator PlayerMove(int x, int y)
@@ -53,7 +55,11 @@ public class PlayerController : MonoBehaviour
                 x_pos += x;
                 y_pos += y;
             }
+            
+            GameObject.Find("UDLRManager").GetComponent<UDLRManager>().ChangeQuestions(UDLRManager.intersection);
+            GameObject.Find("UDLRManager").GetComponent<UDLRManager>().FadeInOrOut();
             StopAllCoroutines();
+            //GameObject.Find("UDLRManager").GetComponent<UDLRManager>().DisableQuestions();
         }
         else
         {
