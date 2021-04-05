@@ -19,6 +19,9 @@ public class UDLRManager : MonoBehaviour
     public GameObject Player;
     private PlayerController pC;
     private QNA qNA;
+
+    public Image Blackout;
+    public TextMeshProUGUI sorry;
     
     //private bool canChoose = true;
 
@@ -50,23 +53,23 @@ public class UDLRManager : MonoBehaviour
 
                 //if the animation finished, fade in
                 //better call from other script
-                if (SceneManager.GetActiveScene().buildIndex != 4)
+                if (SceneManager.GetActiveScene().buildIndex != 5)
                     FadeInOrOut();
                 //intersection += 1; 
 
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow)&&pC.canDown)
             {
-                if (SceneManager.GetActiveScene().buildIndex != 4)
+                if (SceneManager.GetActiveScene().buildIndex != 5)
                     FadeInOrOut();
                 //intersection += 1;
 
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow)&&pC.canLeft)
             {
-                if (SceneManager.GetActiveScene().buildIndex != 4)
+                if (SceneManager.GetActiveScene().buildIndex != 5)
                     FadeInOrOut();
-                if (SceneManager.GetActiveScene().buildIndex == 4)
+                if (SceneManager.GetActiveScene().buildIndex == 5)
                 {
                     intersection += 1;
                     ChangeQuestions();
@@ -74,16 +77,25 @@ public class UDLRManager : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow)&&pC.canRight)
             {
-                if(SceneManager.GetActiveScene().buildIndex != 4)
+                if(SceneManager.GetActiveScene().buildIndex != 5)
                     FadeInOrOut();
-                if (SceneManager.GetActiveScene().buildIndex == 4)
+                if (SceneManager.GetActiveScene().buildIndex == 5)
                 {
                     intersection += 1;
-                    ChangeQuestions();
+                    if (intersection <= 8)
+                        ChangeQuestions();
+                    else if (intersection > 8)
+                        Ending();
                 }
             }
         }
         
+    }
+
+    private void Ending()
+    {
+        Blackout.gameObject.SetActive(true);
+        sorry.gameObject.SetActive(true);
     }
 
     public void FadeInOrOut()
@@ -101,19 +113,19 @@ public class UDLRManager : MonoBehaviour
         down.GetComponent<Image>().color = Color.white;
         left.GetComponent<Image>().color = Color.white;
         right.GetComponent<Image>().color = Color.white;
-        if (SceneManager.GetActiveScene().buildIndex == 0)
+        if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             LevelOneDetect();
         }
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             LevelTwoDetect();
         }
-        if (SceneManager.GetActiveScene().buildIndex == 2)
+        if (SceneManager.GetActiveScene().buildIndex == 3)
         {
             LevelThreeDetect();
         }
-        if (SceneManager.GetActiveScene().buildIndex == 3)
+        if (SceneManager.GetActiveScene().buildIndex == 4)
         {
             LevelFourDetect();
         }
