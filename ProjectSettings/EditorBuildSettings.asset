@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level5.unity
     guid: 67b39b8209d09254298b8576f3263775
+  - enabled: 1
+    path: Assets/LynnTrassh/StartScene.unity
+    guid: eef68904685895441ac719b9c6b77683
   m_configObjects: {}
