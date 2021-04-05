@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     private TextToMap textToMap;
-    private int x_pos;
-    private int y_pos;
+    public int x_pos;
+    public int y_pos;
     [SerializeField]
     private float timer;
     public bool crRunning;
@@ -38,7 +38,8 @@ public class PlayerController : MonoBehaviour
         PlayerAnimation();
         transform.position = textToMap.grid.gridArray[x_pos, y_pos].transform.position;
         NextLevel();
-        Debug.Log(canDown);GameObject.Find("UDLRManager").GetComponent<UDLRManager>().DisableQuestions();
+        //Debug.Log(canDown);
+        GameObject.Find("UDLRManager").GetComponent<UDLRManager>().DisableQuestions();
     }
 
     IEnumerator PlayerMove(int x, int y)
@@ -56,7 +57,7 @@ public class PlayerController : MonoBehaviour
                 y_pos += y;
             }
             
-            GameObject.Find("UDLRManager").GetComponent<UDLRManager>().ChangeQuestions(UDLRManager.intersection);
+            GameObject.Find("UDLRManager").GetComponent<UDLRManager>().ChangeQuestions();
             GameObject.Find("UDLRManager").GetComponent<UDLRManager>().FadeInOrOut();
             StopAllCoroutines();
             //GameObject.Find("UDLRManager").GetComponent<UDLRManager>().DisableQuestions();
