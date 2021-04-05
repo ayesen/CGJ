@@ -318,6 +318,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_Temp
       objectReference: {fileID: 0}
+    - target: {fileID: 6535528368552229981, guid: abab2de05f8dbd34b9f9f44dc5a9324f,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0f6f8f4c5fb91ad48b8529f0c5f3bb54, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abab2de05f8dbd34b9f9f44dc5a9324f, type: 3}
 --- !u!1 &1446398587 stripped
@@ -344,7 +349,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fabb3106f0307b84695a56ecaddfa8e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  set_spd: 5
   timer: 0.2
   crRunning: 0
   thisAnim: {fileID: 1446398588}

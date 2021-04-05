@@ -13,6 +13,7 @@ public class TextToMap : MonoBehaviour
     [SerializeField]
     private GameObject player;
 
+    //If this is not awake, player may get stuck and out of range error.
     void Awake()
     {
         GenerateMap();
@@ -35,6 +36,7 @@ public class TextToMap : MonoBehaviour
                         GameObject tile = Instantiate(tm.prefab, currentPosition, quaternion.identity, transform);
                         //Add tile to the grid
                         grid.gridArray[(int)currentPosition.x, (int)currentPosition.y * -1] = tile;
+                        //Spawn the player here
                         if (tile.tag == "Respawn")
                             player.transform.position = tile.transform.position;
                     }

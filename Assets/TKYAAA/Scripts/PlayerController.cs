@@ -6,16 +6,18 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     private TextToMap textToMap;
-    private int x_pos;
-    private int y_pos;
+    private int x_pos;//Player's X position in the grid. If you need, make it public.
+    private int y_pos;//Player's Y position in the grid
     [SerializeField]
-    private float timer;
-    public bool crRunning;
+    private float timer;//Change this to control time between each grid. Default 0.2
+
+    public bool crRunning;//To detect if my walk coroutine is working or not. If not, player's idle.
+
     [SerializeField]
     private Animator thisAnim;
     public int DirectionNum = 0;
 
-    public bool canUp, canDown, canLeft, canRight;
+    public bool canUp, canDown, canLeft, canRight;//Coop may need this. Bools to detect walls.
 
     void Start()
     {
@@ -34,19 +36,21 @@ public class PlayerController : MonoBehaviour
     {
         DetectWall();
         PlayerControl();
-        PlayerAnimation();
+        //Set player to the correct position.
         transform.position = textToMap.grid.gridArray[x_pos, y_pos].transform.position;
+        PlayerAnimation();
         NextLevel();
     }
-
+    //Coroutine for player to move.
     IEnumerator PlayerMove(int x, int y)
     {
-        yield return new WaitForSeconds(timer / 2);
+        // Detect the next step to check for wall, intersact or exit.
         if (textToMap.grid.gridArray[x_pos + x, y_pos + y].tag == "Wall" || textToMap.grid.gridArray[x_pos + x, y_pos + y].tag == "Intersact"
             || textToMap.grid.gridArray[x_pos + x, y_pos + y].tag == "Exit")
         {
             thisAnim.SetInteger("Direction", 0);
             crRunning = false;
+            //Move one block forward to stand on this block.
             if (textToMap.grid.gridArray[x_pos + x, y_pos + y].tag == "Intersact" || textToMap.grid.gridArray[x_pos + x, y_pos + y].tag == "Exit")
             {
                 x_pos += x;
@@ -54,22 +58,23 @@ public class PlayerController : MonoBehaviour
             }
             StopAllCoroutines();
         }
+        // If not, move forward.
         else
         {
             crRunning = true;
             x_pos += x;
             y_pos += y;
-            yield return new WaitForSeconds(timer / 2);
+            yield return new WaitForSeconds(timer);
             StartCoroutine(PlayerMove(x, y));
         }
     }
-
+    // If player steps on the exit block, change to next scene.
     private void NextLevel()
     {
         if(textToMap.grid.gridArray[x_pos, y_pos].tag == "Exit")
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-
+    //Detect if there's wall around.
     private void DetectWall()
     {
         if (!crRunning)
@@ -92,7 +97,7 @@ public class PlayerController : MonoBehaviour
                 canUp = true;
         }
     }
-
+    //Ayesen's animation
     private void PlayerAnimation()
     {
         if (!crRunning)
@@ -115,8 +120,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    
-
+    //Don't mess with the controls would be th best.
     private void PlayerControl()
     {
         if (!crRunning)
