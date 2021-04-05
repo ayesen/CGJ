@@ -1858,6 +1858,11 @@ MonoBehaviour:
     - "What\u2019s wrong with those sexualities?"
     - "What do you think would happen when you\u2019re so different from others?"
     - Can you explain more?
+  - questions:
+    - ...
+    - ...
+    - ...
+    - I see.
   answers:
   - "\u201CI feel lonely, and just a tiny bit jealous.\u201D"
   - "\u201CEmm, not really. Forget I said that.\u201D"
@@ -1882,6 +1887,7 @@ MonoBehaviour:
   - "\u201CFucking flirtatious bitches.\u201D"
   - "\u201CThey care too much with their face and appearance.\u201D"
   - "\u201CI don\u2019t define myself with my female sexualities.\u201D"
+  - '"They only care about appearance, not capabilities."'
 --- !u!114 &2138731125
 MonoBehaviour:
   m_ObjectHideFlags: 0
