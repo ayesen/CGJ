@@ -32,13 +32,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex != 4)
+        if (SceneManager.GetActiveScene().buildIndex != 5)
         {
             DetectWall();
             PlayerControl();
             PlayerAnimation();
         }
-        else if(SceneManager.GetActiveScene().buildIndex == 4)
+        else if(SceneManager.GetActiveScene().buildIndex == 5)
         {
             Debug.Log("4");
             canLeft = true;
