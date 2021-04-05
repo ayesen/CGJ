@@ -32,13 +32,22 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DetectWall();
-        
-        PlayerControl();
-        PlayerAnimation();
+        if (SceneManager.GetActiveScene().buildIndex != 4)
+        {
+            DetectWall();
+            PlayerControl();
+            PlayerAnimation();
+        }
+        else if(SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            Debug.Log("4");
+            canLeft = true;
+            canRight = true;
+            canDown = false;
+            canUp = false;
+        }
         transform.position = textToMap.grid.gridArray[x_pos, y_pos].transform.position;
         NextLevel();
-        //Debug.Log(canDown);
         GameObject.Find("UDLRManager").GetComponent<UDLRManager>().DisableQuestions();
     }
 

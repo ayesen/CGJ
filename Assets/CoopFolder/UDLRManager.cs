@@ -57,20 +57,22 @@ public class UDLRManager : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.DownArrow)&&pC.canDown)
             {
                 FadeInOrOut();
-                //intersection += 1; 
-                
+                //intersection += 1;
+
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow)&&pC.canLeft)
             {
                 FadeInOrOut();
-                //intersection += 1; 
-                
+                if (SceneManager.GetActiveScene().buildIndex == 4)
+                    intersection += 1;
+
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow)&&pC.canRight)
             {
                 FadeInOrOut();
-                //intersection += 1; 
-                
+                if (SceneManager.GetActiveScene().buildIndex == 4)
+                    intersection += 1;
+
             }
         }
         
