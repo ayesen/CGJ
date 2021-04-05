@@ -1349,7 +1349,7 @@ MonoBehaviour:
   - character: 66
     prefab: {fileID: 4690305331900387979, guid: 5020ad385cf32214f8ea7ac47746ef8b,
       type: 3}
-  mapText: {fileID: 4900000, guid: 199c0cc091a9a0c4a978e36e972df2eb, type: 3}
+  mapText: {fileID: 4900000, guid: 1a7d62f1026c0384cabdb789343d4194, type: 3}
   player: {fileID: 1722006788}
 --- !u!4 &1272185439
 Transform:
