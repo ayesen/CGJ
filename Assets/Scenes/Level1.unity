@@ -1300,14 +1300,16 @@ MonoBehaviour:
     - ...
     - 'Is there a particular thing that you think about the most? '
   answers:
-  - Hi.
-  - Sam is fine.
-  - 'I am in a bad mood. '
-  - "It\u2019s rather complicated. I don\u2019t think anyone could really help me. "
-  - Alright... So what should I start with?
-  - 'I am too tired. I stay awake all night day after day. '
-  - "You know. Stuff. Many stuff. I can\u2019t seem to stop thinking about them.  "
-  - 'I know right. '
+  - "\u201CHi.\u201D "
+  - "\u201CSam is fine.\u201D"
+  - "\u201CI am in a bad mood.\u201D"
+  - "\u201CIt\u2019s rather complicated. I don\u2019t think anyone could really help
+    me.\u201D"
+  - "\u201CAlright... So what should I start with?\u201D"
+  - "\u201CI am too tired. I stay awake all night day after day.\u201D"
+  - "\u201CYou know. Stuff. Many stuff. I can\u2019t seem to stop thinking about
+    them. \"t them.  "
+  - "\u201CI know right.\u201D"
 --- !u!114 &1031736422
 MonoBehaviour:
   m_ObjectHideFlags: 0
