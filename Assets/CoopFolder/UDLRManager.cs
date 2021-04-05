@@ -45,34 +45,42 @@ public class UDLRManager : MonoBehaviour
             {
                 //do the walk stuff
                 //fade out animation
-                
+
                 //load the next question
-               
+
                 //if the animation finished, fade in
                 //better call from other script
-                FadeInOrOut();
+                if (SceneManager.GetActiveScene().buildIndex != 4)
+                    FadeInOrOut();
                 //intersection += 1; 
-                
+
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow)&&pC.canDown)
             {
-                FadeInOrOut();
+                if (SceneManager.GetActiveScene().buildIndex != 4)
+                    FadeInOrOut();
                 //intersection += 1;
 
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow)&&pC.canLeft)
             {
-                FadeInOrOut();
+                if (SceneManager.GetActiveScene().buildIndex != 4)
+                    FadeInOrOut();
                 if (SceneManager.GetActiveScene().buildIndex == 4)
+                {
                     intersection += 1;
-
+                    ChangeQuestions();
+                }
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow)&&pC.canRight)
             {
-                FadeInOrOut();
+                if(SceneManager.GetActiveScene().buildIndex != 4)
+                    FadeInOrOut();
                 if (SceneManager.GetActiveScene().buildIndex == 4)
+                {
                     intersection += 1;
-
+                    ChangeQuestions();
+                }
             }
         }
         
