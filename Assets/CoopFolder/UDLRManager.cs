@@ -97,10 +97,10 @@ public class UDLRManager : MonoBehaviour
 
     public void ChangeQuestions()//dont know the data structure for the questions
     {
-        up.GetComponent<Image>().color = Color.black;
-        down.GetComponent<Image>().color = Color.black;
-        left.GetComponent<Image>().color = Color.black;
-        right.GetComponent<Image>().color = Color.black;
+        up.GetComponent<Image>().color = Color.white;
+        down.GetComponent<Image>().color = Color.white;
+        left.GetComponent<Image>().color = Color.white;
+        right.GetComponent<Image>().color = Color.white;
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             LevelOneDetect();
