@@ -23,6 +23,7 @@
             <e p="TextMapping.cs" t="Include" />
             <e p="TextToMap.cs" t="Include" />
           </e>
+          <e p="Tempo.txt" t="Include" />
         </e>
         <e p="Ink" t="Include">
           <e p="Demos" t="Include">
