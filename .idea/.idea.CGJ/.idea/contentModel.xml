@@ -12,6 +12,7 @@
             <e p="Level1.txt" t="Include" />
             <e p="Level2.txt" t="Include" />
             <e p="Level3.txt" t="Include" />
+            <e p="Level4.txt" t="Include" />
             <e p="StopAtStop.cs" t="Include" />
             <e p="TextMapping.cs" t="Include" />
             <e p="TextToMap.cs" t="Include" />
