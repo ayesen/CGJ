@@ -13,6 +13,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/TKYAAA/Scripts/Grid.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Harry's shit/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.1.1/Scripts/Runtime/TextMeshProUGUI.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -21,6 +22,7 @@
       <option value="$PROJECT_DIR$/Assets/Harry's shit/Scripts/Level3.txt" />
       <option value="$PROJECT_DIR$/Assets/Harry's shit/Scripts/Level2.txt" />
       <option value="$PROJECT_DIR$/Assets/Harry's shit/Scripts/Level4.txt" />
+      <option value="$PROJECT_DIR$/Assets/Harry's shit/Tempo.txt" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1qXVIGG2yafw9uaqKIAyjiDVUK4" />
@@ -71,6 +73,7 @@
       <option name="presentableId" value="Default" />
       <updated>1617225841445</updated>
       <workItem from="1617225847304" duration="2817000" />
+      <workItem from="1617594801748" duration="1574000" />
     </task>
     <servers />
   </component>
